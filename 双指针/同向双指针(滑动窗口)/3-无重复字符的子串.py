@@ -1,5 +1,8 @@
 # 给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。
 
+from typing import Counter
+
+
 class Solution:
     # 时间复杂度：0(n)，空间复杂度：0(128) = 0(1)，或者O(len(set(s)))，因为字符集是有限的
     def lengthOfLongestSubstring(self, s: str) -> int:

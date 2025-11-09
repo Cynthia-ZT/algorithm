@@ -3,6 +3,9 @@
 # 返回容器可以储存的最大水量。
 # 说明：你不能倾斜容器。
 
+from typing import List
+
+
 class Solution:
     # 时间复杂度：0(n)，空间复杂度：0(1)
     def maxArea(self, heights: List[int]) -> int:

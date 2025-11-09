@@ -1,6 +1,9 @@
 # 给定一个已排序的链表的头head，删除原始链表中所有重复数字的节点，值留下不同的数字。返回已排序的链表。
 # 跟83的不同是，只要有重复出现过的都删掉，比如1,2,2,3要变成1,3
 
+from typing import Optional
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -13,8 +16,8 @@ class Solution:
         cur = dummy
         while cur.next and cur.next.next:
             val = cur.next.val
-            if cur.next.next.val = val:
-                while cur.next and cur.next.next = val:
+            if cur.next.next.val == val:
+                while cur.next and cur.next.next == val:
                     cur.next = cur.next.next
             else:
                 cur = cur.next

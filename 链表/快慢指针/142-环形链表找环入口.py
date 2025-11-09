@@ -14,7 +14,7 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-            if slot is fast:
+            if slow is fast:
                 while slow is not head:
                     slow = slow.next
                     head = head.next

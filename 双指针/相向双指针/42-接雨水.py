@@ -1,5 +1,8 @@
 # 给定n个非负整数表示每个宽度为1的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
+from typing import List
+
+
 class Solution:
 
     # 每个单位能接多少水取决于它左边最高的柱子和右边最高的柱子中较矮的那个
@@ -35,7 +38,7 @@ class Solution:
         suf_max = 0
         # 小于等于是因为左右指针相等的时候，还是可以算当前位置能接的水
         while left <= right:
-            pre_max = max(left_max, height[left])
+            pre_max = max(pre_max, height[left])
             suf_max = max(suf_max, height[right])
             if pre_max < suf_max:
                 ans += pre_max - height[left]

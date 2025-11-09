@@ -2,6 +2,10 @@
 # 找出该数组中满足其和≥target的长度最小的连续子数组[nums]，numsl+1, ..., numsr-1, numsr]，并返回其长度。
 # 如果不存在符合条件的子数组，返回0。
 
+from math import inf
+from typing import List
+
+
 class Solution:
     # 时间复杂度：0(n)，空间复杂度：0(1)
     # 因为循环的次数是left+=1的次数(最多是n次)加上right+=1的次数(最多是n次)
