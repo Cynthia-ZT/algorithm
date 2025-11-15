@@ -10,6 +10,10 @@
 #   选：在剩余容量为c-w[i]时，从前i-1个物品得到的最大价值和
 # dfs(i,c) = max(dfs(i-1, c), dfs(i-1, c-w[i])+v[i])
 
+from functools import cache
+from typing import List
+
+
 def zero_one_knapsack(capacity: int, w: List[int], v: List[int]) -> int:
     n = len(w)
     @cache

@@ -14,8 +14,12 @@
 # 最终：dfs(i,j) = 
 #   dfs(i-1,j-1)                                    s[i]=t[j]
 #   min(dfs(i,j-1), dfs(i-1,j), dfs(i-1,j-1)) + 1   s[i]!=t[j]
+from cmath import inf
+from functools import cache
+
+
 class Solution:
-    def minDistance(self, s: str, t: str) -> int:
+    def minDistance1(self, s: str, t: str) -> int:
         n = len(s)
         m = len(t)
 
@@ -34,7 +38,7 @@ class Solution:
     # f[i+1][j+1] = 
     #   f[i][j]                                 s[i]=t[j]
     #   min(f[i+1][j], f[i][j+1], f[i][j]) + 1  s[i]!=t[j]
-    def minDistance(self, s: str, t: str) -> int:
+    def minDistance2(self, s: str, t: str) -> int:
         n = len(s)
         m = len(t)
         f = [[inf]*(m+1) for _ in range(n+1)]
@@ -46,10 +50,10 @@ class Solution:
                     f[i+1][j+1] = f[i][j]
                 else:
                     f[i+1][j+1] = min(f[i+1][j], f[i][j+1], f[i][j]) + 1
-        return f[n][m]
+        return f[n][m] # type: ignore
     
     # 空间优化，两个数组
-    def minDistance(self, s: str, t: str) -> int:
+    def minDistance3(self, s: str, t: str) -> int:
         n, m = len(s), len(t)
         f = [list(range(m + 1)), [0] * (n + 1)]
         for i, x in enumerate(s):

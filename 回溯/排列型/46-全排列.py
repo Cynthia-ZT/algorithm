@@ -14,10 +14,10 @@ from typing import List
 
 class Solution:
     # 时间复杂度O(n*n!)，n!是因为叶子结点是排列的可能性，时间复杂度可以只看叶子结点数，空间复杂度O(n)
-    def permute(self, nums: List[int]) -> List[List[int]]:
+    def permute1(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
         ans = []
         path = [] * n
-        n = len(nums)
         def dfs(i, s):
             if i == n:
                 ans.append(''.join(path.copy()))
@@ -30,9 +30,9 @@ class Solution:
 
     # 也可以用一个布尔数组onPath记录path中的数字，如果nums[i]在path中，则onPath位真
     def permute(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
         ans = []
         path = [] * n
-        n = len(nums)
         on_path = [False] * n
         def dfs(i):
             if i == n:

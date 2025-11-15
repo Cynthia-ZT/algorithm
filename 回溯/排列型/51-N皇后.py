@@ -28,7 +28,7 @@ from typing import List
 
 class Solution:
     # 时间复杂度O(n2*n!)，空间复杂度O(n)
-    def solveNQueens(self, n: int) -> List[List[str]]:
+    def solveNQueens1(self, n: int) -> List[List[str]]:
         ans = []
         col = [] * n
         def valid(r, c):
@@ -40,7 +40,7 @@ class Solution:
 
         def dfs(r, s):
             if r == n:
-                ans.append(['.'*c + 'Q', '.'*(n-1-c) for c in col])
+                ans.append(['.'*c + 'Q' + '.'*(n-1-c) for c in col])
                 return
             for c in s:
                 if valid(r, c):
@@ -59,13 +59,13 @@ class Solution:
 
         def dfs(r):
             if r == n:
-                ans.append(['.'*c + 'Q', '.'*(n-1-c) for c in col])
+                ans.append(['.' * c + 'Q' + '.' * (n - 1 - c) for c in col])
                 return
             for c in range(n):
                 if not on_path[c] and not diag1[r+c] and not diag2[r-c]:
                     col[r] = c
-                    on_path[c] = diag1[c] = diag[c] = True
-                    dfs(r+1, s-{c})
-                    on_path[c] = diag1[c] = diag[c] = False
+                    on_path[c] = diag1[c] = diag2[c] = True
+                    dfs(r+1)
+                    on_path[c] = diag1[c] = diag2[c] = False
         dfs(0)
         return ans

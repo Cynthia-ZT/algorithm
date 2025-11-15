@@ -12,6 +12,10 @@
 
 # dfs(i,c) = max(dfs(i-1,c), dfs(i, c-w[i])+v[i])
 
+from functools import cache
+from typing import List
+
+
 def unbound_knapsack(capacity: int, w: List[int], v: List[int]) -> int:
     n = len(w)
     @cache

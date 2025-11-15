@@ -16,7 +16,7 @@ from typing import List
 class Solution:
     # 时间复杂度O(n*2^n)，因为每个元素有选或不选两种情况，然后每次遍历的时候还有copy的时间O(n)
     # 空间复杂度O(n)
-    def subsets(self, nums: List[int]) -> List[List[int]]:
+    def subsets1(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         ans = []
         path = []

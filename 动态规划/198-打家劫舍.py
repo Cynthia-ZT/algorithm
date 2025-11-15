@@ -9,6 +9,10 @@
 #   选：从前i-2个房子中得到的最大金额和
 # dfs(i) = max(dfs(i-1), dfs(i-2)+nums[i])
 
+from functools import cache
+from typing import List
+
+
 class Solution:
     # 时间复杂度在不加cache的时候跟回溯一样，指数级别，加了cache以后，就是记忆化搜索，每中结果只会计算一次，优化到O(n)
     #   计算公式是：状态个数(i的个数，n) * 单个状态计算需要的时间(O(1))
@@ -35,7 +39,7 @@ class Solution:
             n = len(nums)
             f = [0] * (n+2)
             for i, x in enumerate(nums):
-                f[i] = max(f[i+1], f[i]+x)
+                f[i+2] = max(f[i+1], f[i]+x)
             return f[n+1]
 
         # 优化空间复杂度到O(1)

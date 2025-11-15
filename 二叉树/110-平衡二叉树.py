@@ -12,6 +12,7 @@ class TreeNode:
         self.right = right
 
 class Solution:
+    # 在计算二叉树的基础上，加上了判断高度差
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         # 时间复杂度：O(n)，空间复杂度：O(n)
         def depth(root: Optional[TreeNode]) -> int:

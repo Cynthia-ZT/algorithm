@@ -18,9 +18,14 @@
 #
 # dfs(i) = max{dfs(j)}+1    j<i 且 nums[j]<nums[i]
 
+from bisect import bisect_left
+from functools import cache
+from typing import List
+
+
 class Solution:
     # 时间复杂度O(n^2)，空间复杂度O(n)
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS1(self, nums: List[int]) -> int:
         n = len(nums)
         
         @cache
@@ -36,7 +41,7 @@ class Solution:
         return ans
 
     # f[i] = max{f[j]} +1       j<i 且 nums[j]<nums[i]
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS2(self, nums: List[int]) -> int:
         n = len(nums)
         f = [0] * n
 
@@ -61,22 +66,22 @@ class Solution:
 #   注：这个算法按分类的话，算贪心加二分。
 
     # 时间复杂度O(nlogn)，空间复杂度O(n)
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS3(self, nums: List[int]) -> int:
         g = []
         for x in nums:
             j = bisect_left(g,x)
-            if j = len(g):
+            if j == len(g):
                 g.append(x)
             else:
                 g[j]=x
         return len(g)
 
     # 时间复杂度O(nlogn)，空间复杂度O(1)，
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS4(self, nums: List[int]) -> int:
         ng = 0
         for x in nums:
             j = bisect_left(nums,x,0,ng)
-            if j = ng:
+            if j == ng:
                 nums[ng]=(x)
             else:
                 nums[j]=x
@@ -87,7 +92,7 @@ class Solution:
         ng = 0
         for x in nums:
             j = bisect_left(nums,x,0,ng)
-            if j = ng:
+            if j == ng:
                 nums[ng]=(x)
             else:
                 nums[j]=x

@@ -17,9 +17,13 @@
 # 0-1背包的公式：dfs(i) = dfs(i,c) = max(dfs(i-1, c), dfs(i-1, c-w[i])+v[i])
 # 因为这题求得是方案数，选和不选都要算上，所以公式从max变成加起来：dfs(i,c) = dfs(i-1, c) + dfs(i-1, c-w[i])
 
+from functools import cache
+from typing import List
+
+
 class Solution:
     # 时间复杂度：O(n*target)因为这里有两个状态，i和c。空间复杂度：O(n*target)
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+    def findTargetSumWays1(self, nums: List[int], target: int) -> int:
         target += sum(nums)
         if target < 0 or target % 2:
             return 0
@@ -37,7 +41,7 @@ class Solution:
 
     # 改成递推
     # f[i+1][c] = f[i][c] + f[i][c-w[i]]
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+    def findTargetSumWays2(self, nums: List[int], target: int) -> int:
         target += sum(nums)
         if target < 0 or target % 2:
             return 0
@@ -58,7 +62,7 @@ class Solution:
 
     # f的结果只跟前一个的结果有关，所以f2的结果可以放到f0里，f3的结果可以放到f1里，所以可以直接把f[i+1]和f[i]模2，降低空间复杂度
     # 空间复杂度O(target)
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+    def findTargetSumWays3(self, nums: List[int], target: int) -> int:
         target += sum(nums)
         if target < 0 or target % 2:
             return 0

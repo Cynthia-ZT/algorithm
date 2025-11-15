@@ -28,9 +28,12 @@
 #   dfs(i-1,j-1) + 1            s[i]=t[j]
 #   max(dfs(i,j-1), dfs(i-1,j)) s[i]!=t[j]
 
+from functools import cache
+
+
 class Solution:
     # 时间复杂度O(n*m)，空间复杂度O(n*m)
-    def longestCommonSubsequence(self, s: str, t: str) -> int:
+    def longestCommonSubsequence1(self, s: str, t: str) -> int:
         n = len(s)
         m = len(t)
 
@@ -48,7 +51,7 @@ class Solution:
     # f[i+1][j+1] = 
     # s[i]==t[j]: f[i][j]+1
     # s[i]!=t[j]: max(f[i+1][j], f[i][j+1])
-    def longestCommonSubsequence(self, s: str, t: str) -> int:
+    def longestCommonSubsequence2(self, s: str, t: str) -> int:
         n = len(s)
         m = len(t)
 
